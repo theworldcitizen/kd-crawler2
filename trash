@@ -1,0 +1,21 @@
+@staticmethod
+    def get_personal_info_by_fio(soup: BeautifulSoup):
+        try:
+            table = soup.find(text="Surname").find_parent("table")
+        except:
+            return 'test'
+        rows = table.find_all("tr")
+        for row in rows:
+            row = row.text
+            row = row.splitlines()
+            if 'Surname' in row or 'Forename(s)' in row or 'Title' in row or 'Gender' in row or 'Occupation' in row \
+                    or 'Date of Birth' in row or 'Last Known Address' in row:
+                surname = row[5]
+                firstname = row[5]
+                title = row[5]
+                gender = row[5]
+                occupation = row[5]
+                date_of_birth = row[5]
+                address = row[5]
+                # print(surname)
+                return surname, firstname, title, gender, occupation, date_of_birth, address
